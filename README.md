@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cong Yao - Personal Website
+
+A modern, responsive personal website built with Next.js, React, and Tailwind CSS. Features a clean design with contact form functionality.
+
+## Features
+
+- 🎨 Modern, responsive design with dark mode support
+- 📧 Functional contact form with email integration
+- ⚡ Fast performance with Next.js
+- 🎯 SEO optimized
+- 📱 Mobile-friendly
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <your-repo-url>
+cd personal_website
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up environment variables:
+```bash
+cp env.example .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Edit `.env.local` and add your email credentials:
+```
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASS=your-app-password
+```
 
-## Learn More
+**Note:** For Gmail, you'll need to use an App Password instead of your regular password. To generate one:
+1. Go to your Google Account settings
+2. Enable 2-Step Verification if not already enabled
+3. Go to Security > App passwords
+4. Generate a new app password for "Mail"
+5. Use that password in the EMAIL_PASS field
 
-To learn more about Next.js, take a look at the following resources:
+4. Run the development server:
+```bash
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Customization
 
-## Deploy on Vercel
+### Personal Information
+Edit `app/page.tsx` to update:
+- Your name and title
+- About section content
+- Skills and expertise
+- Contact information
+- Profile picture (replace the "CY" initials with your actual image)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Styling
+The website uses Tailwind CSS for styling. You can customize colors, fonts, and layout by modifying the classes in `app/page.tsx`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Contact Form
+The contact form is configured to send emails to the address specified in the API route (`app/api/contact/route.ts`). Update the `to` field in the mailOptions to receive emails at your preferred address.
+
+## Deployment
+
+### Vercel (Recommended)
+The easiest way to deploy is using the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
+
+1. Push your code to GitHub
+2. Import your project to Vercel
+3. Add your environment variables in the Vercel dashboard
+4. Deploy!
+
+### Other Platforms
+You can deploy to any platform that supports Next.js. Make sure to:
+- Set the environment variables for email functionality
+- Configure your domain and SSL certificates
+
+## Technologies Used
+
+- [Next.js](https://nextjs.org/) - React framework
+- [React](https://reactjs.org/) - UI library
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [Nodemailer](https://nodemailer.com/) - Email functionality
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
