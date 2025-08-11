@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: 'Cong Yao <noreply@yourdomain.com>',
+          from: 'onboarding@resend.dev',
           to: ['cong.yao.main@gmail.com'],
           subject: `New Question for Cong from ${name}`,
           html: `
@@ -36,7 +36,9 @@ export async function POST(request: NextRequest) {
       });
 
       if (!resendResponse.ok) {
-        throw new Error('Failed to send email via Resend');
+        const errorData = await resendResponse.text();
+        console.error('Resend API error:', errorData);
+        throw new Error(`Failed to send email via Resend: ${resendResponse.status}`);
       }
 
       return NextResponse.json(
