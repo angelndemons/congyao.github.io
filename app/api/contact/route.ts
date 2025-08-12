@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { addSpamLog } from '../spam-log/route';
+import { addSpamLog } from '../../lib/spam-logger';
 
 // Simple in-memory rate limiting (for production, consider Redis or similar)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
