@@ -188,15 +188,6 @@ export default function Home() {
               Ask me anything on your mind, legal or otherwise (not giving legal advice :)
             </p>
           </div>
-          
-          {/* Legal Disclaimer */}
-          <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4 mb-6">
-            <p className="text-sm text-yellow-800 dark:text-yellow-200">
-              <strong>Important:</strong> Contacting me through this form does not create an attorney-client relationship. 
-              Do not submit confidential or privileged information. By submitting this form, you consent to the processing 
-              of your information for the purpose of responding to your inquiry.
-            </p>
-          </div>
             
             <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6">
               <div>
@@ -284,6 +275,15 @@ export default function Home() {
               {submitStatus === 'error' && (
                 <p className="text-red-600 dark:text-red-400 text-sm text-center">Oops! Something went wrong. Please try again.</p>
               )}
+              
+              {/* Legal Disclaimer */}
+              <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-600">
+                <p className="text-xs text-slate-500 dark:text-slate-400 text-center">
+                  <strong>Important:</strong> Contacting me through this form does not create an attorney-client relationship. 
+                  Do not submit confidential or privileged information. By submitting this form, you consent to the processing 
+                  of your information for the purpose of responding to your inquiry.
+                </p>
+              </div>
             </form>
           </div>
         </section>
