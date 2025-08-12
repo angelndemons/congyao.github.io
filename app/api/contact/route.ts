@@ -159,7 +159,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { 
           error: 'daily_limit_reached',
-          message: "Oops! I've been flooded with questions today and my inbox is taking a coffee break! ☕ Come back tomorrow when I'm fresh and caffeinated - I promise to be much more responsive! 😄"
+          message: "☕ Oops! My inbox is flooded and taking a coffee break! Come back tomorrow when I'm fresh and caffeinated."
         },
         { status: 429 }
       );

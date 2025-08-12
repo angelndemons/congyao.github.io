@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
   const [formData, setFormData] = useState({
@@ -12,6 +12,29 @@ export default function Home() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error' | 'daily_limit'>('idle');
+  const [limitReached, setLimitReached] = useState(false);
+  const [dailyCount, setDailyCount] = useState(0);
+
+  // Check daily limit status when component loads
+  useEffect(() => {
+    const checkLimitStatus = async () => {
+      try {
+        const response = await fetch('/api/limit-status');
+        if (response.ok) {
+          const data = await response.json();
+          setLimitReached(data.limitReached);
+          setDailyCount(data.dailyCount);
+          if (data.limitReached) {
+            setSubmitStatus('daily_limit');
+          }
+        }
+      } catch (error) {
+        console.error('Error checking limit status:', error);
+      }
+    };
+
+    checkLimitStatus();
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -196,6 +219,15 @@ export default function Home() {
               Ask me anything on your mind, legal or otherwise (not giving legal advice :)
             </p>
           </div>
+          
+          {/* Daily Limit Message */}
+          {limitReached && (
+            <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg p-6 mb-6">
+              <p className="text-orange-800 dark:text-orange-200 text-center text-lg font-medium">
+                ☕ Oops! My inbox is flooded and taking a coffee break! Come back tomorrow when I'm fresh and caffeinated.
+              </p>
+            </div>
+          )}
             
             <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6">
               <div>
@@ -209,7 +241,12 @@ export default function Home() {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                  disabled={limitReached}
+                  className={`w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg transition-colors ${
+                    limitReached 
+                      ? 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 cursor-not-allowed' 
+                      : 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+                  }`}
                   placeholder="Your name"
                 />
               </div>
@@ -224,7 +261,12 @@ export default function Home() {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                  disabled={limitReached}
+                  className={`w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg transition-colors ${
+                    limitReached 
+                      ? 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 cursor-not-allowed' 
+                      : 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+                  }`}
                   placeholder="your.email@example.com"
                 />
               </div>
@@ -238,7 +280,12 @@ export default function Home() {
                   name="wechatId"
                   value={formData.wechatId}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                  disabled={limitReached}
+                  className={`w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg transition-colors ${
+                    limitReached 
+                      ? 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 cursor-not-allowed' 
+                      : 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+                  }`}
                   placeholder="Your WeChat ID (optional)"
                 />
               </div>
@@ -266,16 +313,25 @@ export default function Home() {
                   onChange={handleInputChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
+                  disabled={limitReached}
+                  className={`w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg transition-colors resize-none ${
+                    limitReached 
+                      ? 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 cursor-not-allowed' 
+                      : 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+                  }`}
                   placeholder="What's on your mind? Ask away!"
                 />
               </div>
               <button
                 type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 text-lg"
+                disabled={isSubmitting || limitReached}
+                className={`w-full font-medium py-3 px-6 rounded-lg transition-colors duration-200 text-lg ${
+                  limitReached
+                    ? 'bg-slate-400 text-slate-600 cursor-not-allowed'
+                    : 'bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white'
+                }`}
               >
-                {isSubmitting ? 'Sending...' : 'Ask Cong!'}
+                {limitReached ? 'Daily Limit Reached' : (isSubmitting ? 'Sending...' : 'Ask Cong!')}
               </button>
               {submitStatus === 'success' && (
                 <p className="text-green-600 dark:text-green-400 text-sm text-center">Thank you! I&apos;ll get back to you soon!</p>
@@ -283,13 +339,7 @@ export default function Home() {
               {submitStatus === 'error' && (
                 <p className="text-red-600 dark:text-red-400 text-sm text-center">Oops! Something went wrong. Please try again.</p>
               )}
-              {submitStatus === 'daily_limit' && (
-                <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg p-4">
-                  <p className="text-orange-800 dark:text-orange-200 text-sm text-center">
-                    ☕ Oops! I've been flooded with questions today and my inbox is taking a coffee break! Come back tomorrow when I'm fresh and caffeinated - I promise to be much more responsive! 😄
-                  </p>
-                </div>
-              )}
+
               
               {/* Legal Disclaimer */}
               <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-600">
