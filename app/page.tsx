@@ -13,7 +13,7 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error' | 'daily_limit'>('idle');
   const [limitReached, setLimitReached] = useState(false);
-  const [dailyCount, setDailyCount] = useState(0);
+
 
   // Check daily limit status when component loads
   useEffect(() => {
@@ -21,12 +21,11 @@ export default function Home() {
       try {
         const response = await fetch('/api/limit-status');
         if (response.ok) {
-          const data = await response.json();
-          setLimitReached(data.limitReached);
-          setDailyCount(data.dailyCount);
-          if (data.limitReached) {
-            setSubmitStatus('daily_limit');
-          }
+                  const data = await response.json();
+        setLimitReached(data.limitReached);
+        if (data.limitReached) {
+          setSubmitStatus('daily_limit');
+        }
         }
       } catch (error) {
         console.error('Error checking limit status:', error);
@@ -319,7 +318,7 @@ export default function Home() {
                       ? 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 cursor-not-allowed' 
                       : 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent'
                   }`}
-                  placeholder="What's on your mind? Ask away!"
+                  placeholder="What&apos;s on your mind? Ask away!"
                 />
               </div>
               <button

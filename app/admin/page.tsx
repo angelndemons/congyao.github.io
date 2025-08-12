@@ -132,7 +132,7 @@ export default function AdminPage() {
 
             {/* Daily Statistics */}
             <div className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-xl p-6 border border-slate-200 dark:border-slate-700">
-              <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Today's Statistics ({spamData.dailyStats.date})</h2>
+              <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Today&apos;s Statistics ({spamData.dailyStats.date})</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
                   <p className="text-green-800 dark:text-green-200 font-semibold">
