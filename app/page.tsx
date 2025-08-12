@@ -223,7 +223,7 @@ export default function Home() {
           {limitReached && (
             <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg p-6 mb-6">
               <p className="text-orange-800 dark:text-orange-200 text-center text-lg font-medium">
-                ☕ Oops! My inbox is flooded and taking a coffee break! Come back tomorrow when I'm fresh and caffeinated.
+                ☕ Oops! My inbox is flooded and taking a coffee break! Come back tomorrow when I&apos;m fresh and caffeinated.
               </p>
             </div>
           )}
