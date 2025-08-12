@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { addSpamLog } from '../../lib/spam-logger';
+import { addSpamLog, isDailyLimitReached } from '../../lib/spam-logger';
 
 // Simple in-memory rate limiting (for production, consider Redis or similar)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -73,7 +73,8 @@ export async function POST(request: NextRequest) {
         reason: 'Honeypot field filled',
         name: name || 'unknown',
         email: email || 'unknown',
-        message: message || 'unknown'
+        message: message || 'unknown',
+        wasSent: false
       });
       
       // Add a small delay to make bot spam less profitable
@@ -140,6 +141,30 @@ export async function POST(request: NextRequest) {
     if (nameLower.includes('test') || nameLower.includes('admin')) spamScore += 1;
     if (nameLower.length < 2) spamScore += 1;
     
+    // Check daily email limit before processing
+    if (isDailyLimitReached()) {
+      console.log('Daily email limit reached - rejecting new submissions');
+      
+      // Log the attempt (but don't send email)
+      addSpamLog({
+        ip,
+        spamScore: 0,
+        reason: 'Daily limit reached',
+        name: sanitizedName,
+        email: sanitizedEmail,
+        message: sanitizedMessage,
+        wasSent: false
+      });
+      
+      return NextResponse.json(
+        { 
+          error: 'daily_limit_reached',
+          message: "Oops! I've been flooded with questions today and my inbox is taking a coffee break! ☕ Come back tomorrow when I'm fresh and caffeinated - I promise to be much more responsive! 😄"
+        },
+        { status: 429 }
+      );
+    }
+
     // If spam score is high enough, log but don't send email
     if (spamScore >= 3) {
       console.log('High spam score detected - logging but not sending email:', {
@@ -157,7 +182,8 @@ export async function POST(request: NextRequest) {
         reason: 'High spam score',
         name: sanitizedName,
         email: sanitizedEmail,
-        message: sanitizedMessage
+        message: sanitizedMessage,
+        wasSent: false
       });
       
       // Add a small delay to make spam less profitable
@@ -230,6 +256,17 @@ export async function POST(request: NextRequest) {
 
     const result = await resendResponse.json();
     console.log('Email sent successfully:', result);
+
+    // Log successful email
+    addSpamLog({
+      ip,
+      spamScore: 0,
+      reason: 'Email sent successfully',
+      name: sanitizedName,
+      email: sanitizedEmail,
+      message: sanitizedMessage,
+      wasSent: true
+    });
 
     return NextResponse.json(
       { message: 'Thank you!' },

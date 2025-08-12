@@ -10,12 +10,21 @@ interface SpamLog {
   name: string;
   email: string;
   message: string;
+  wasSent: boolean;
 }
 
 interface SpamData {
   totalSpamAttempts: number;
   recentSpam: SpamLog[];
   allSpam: SpamLog[];
+  dailyStats: {
+    date: string;
+    sentToday: number;
+    filteredToday: number;
+    totalToday: number;
+    limitReached: boolean;
+    limit: number;
+  };
 }
 
 export default function AdminPage() {
@@ -116,9 +125,36 @@ export default function AdminPage() {
             {/* Summary */}
             <div className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-xl p-6 border border-slate-200 dark:border-slate-700">
               <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Summary</h2>
-              <p className="text-slate-700 dark:text-slate-300">
+              <p className="text-slate-700 dark:text-slate-300 mb-2">
                 Total spam attempts: <span className="font-semibold text-red-600">{spamData.totalSpamAttempts}</span>
               </p>
+            </div>
+
+            {/* Daily Statistics */}
+            <div className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-xl p-6 border border-slate-200 dark:border-slate-700">
+              <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Today's Statistics ({spamData.dailyStats.date})</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
+                  <p className="text-green-800 dark:text-green-200 font-semibold">
+                    Emails Sent: {spamData.dailyStats.sentToday}/{spamData.dailyStats.limit}
+                  </p>
+                </div>
+                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+                  <p className="text-red-800 dark:text-red-200 font-semibold">
+                    Filtered Out: {spamData.dailyStats.filteredToday}
+                  </p>
+                </div>
+                <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
+                  <p className="text-blue-800 dark:text-blue-200 font-semibold">
+                    Total Attempts: {spamData.dailyStats.totalToday}
+                  </p>
+                </div>
+                <div className={`border rounded-lg p-4 ${spamData.dailyStats.limitReached ? 'bg-orange-50 dark:bg-orange-900/20 border-orange-200 dark:border-orange-800' : 'bg-gray-50 dark:bg-gray-900/20 border-gray-200 dark:border-gray-800'}`}>
+                  <p className={`font-semibold ${spamData.dailyStats.limitReached ? 'text-orange-800 dark:text-orange-200' : 'text-gray-800 dark:text-gray-200'}`}>
+                    Status: {spamData.dailyStats.limitReached ? '🚫 Daily Limit Reached' : '✅ Accepting Messages'}
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Recent Spam */}
@@ -145,7 +181,20 @@ export default function AdminPage() {
                           <strong>IP:</strong> {log.ip}
                         </div>
                         <div>
+                          <strong>Status:</strong> 
+                          <span className={`ml-1 px-2 py-1 rounded text-xs font-medium ${
+                            log.wasSent 
+                              ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-200' 
+                              : 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-200'
+                          }`}>
+                            {log.wasSent ? '✅ Sent' : '❌ Filtered'}
+                          </span>
+                        </div>
+                        <div>
                           <strong>Reason:</strong> {log.reason}
+                        </div>
+                        <div>
+                          <strong>Score:</strong> {log.spamScore || 'N/A'}
                         </div>
                         <div>
                           <strong>Name:</strong> {log.name}

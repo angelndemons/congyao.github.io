@@ -11,7 +11,7 @@ export default function Home() {
     phone: '' // Honeypot field - hidden from users but bots might fill it
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error' | 'daily_limit'>('idle');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -49,8 +49,11 @@ export default function Home() {
         
         // Handle specific error types
         if (response.status === 429) {
-          setSubmitStatus('error');
-          // You could add a specific error message for rate limiting
+          if (errorData.error === 'daily_limit_reached') {
+            setSubmitStatus('daily_limit');
+          } else {
+            setSubmitStatus('error');
+          }
         } else if (response.status === 400) {
           setSubmitStatus('error');
           // You could add specific error messages for validation errors
@@ -279,6 +282,13 @@ export default function Home() {
               )}
               {submitStatus === 'error' && (
                 <p className="text-red-600 dark:text-red-400 text-sm text-center">Oops! Something went wrong. Please try again.</p>
+              )}
+              {submitStatus === 'daily_limit' && (
+                <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg p-4">
+                  <p className="text-orange-800 dark:text-orange-200 text-sm text-center">
+                    ☕ Oops! I've been flooded with questions today and my inbox is taking a coffee break! Come back tomorrow when I'm fresh and caffeinated - I promise to be much more responsive! 😄
+                  </p>
+                </div>
               )}
               
               {/* Legal Disclaimer */}
