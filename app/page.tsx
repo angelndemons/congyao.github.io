@@ -165,19 +165,18 @@ export default function Home() {
                 </ul>
               </div>
               
-              <div>
-                <h4 className="font-semibold text-slate-900 dark:text-white mb-3">Transactional Law</h4>
-                <ul className="space-y-2 text-slate-700 dark:text-slate-300">
-                  <li>Transactional Law</li>
-                  <li>CDA/NDA</li>
-                  <li>MTA</li>
-                  <li>Clinical Trial Agreements</li>
-                  <li>Collaboration Agreements</li>
-                  <li>Patent Licenses</li>
-                  <li>M&A Agreements</li>
-                  <li>Joint Ventures</li>
-                </ul>
-              </div>
+                           <div>
+               <h4 className="font-semibold text-slate-900 dark:text-white mb-3">Transactional Law</h4>
+               <ul className="space-y-2 text-slate-700 dark:text-slate-300">
+                 <li>CDA/NDA</li>
+                 <li>MTA</li>
+                 <li>Clinical Trial Agreements</li>
+                 <li>Collaboration Agreements</li>
+                 <li>Patent Licenses</li>
+                 <li>M&A Agreements</li>
+                 <li>Joint Ventures</li>
+               </ul>
+             </div>
               
               <div>
                 <h4 className="font-semibold text-slate-900 dark:text-white mb-3">Due Diligence</h4>
@@ -190,8 +189,8 @@ export default function Home() {
                 </ul>
               </div>
               
-              <div>
-                <h4 className="font-semibold text-slate-900 dark:text-white mb-3">Corporate & Governance</h4>
+                           <div>
+               <h4 className="font-semibold text-slate-900 dark:text-white mb-3">Corporate</h4>
                 <ul className="space-y-2 text-slate-700 dark:text-slate-300">
                   <li>Corporate Governance</li>
                   <li>Board Counsel</li>
