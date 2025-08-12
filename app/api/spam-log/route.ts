@@ -38,7 +38,7 @@ export async function GET(request: NextRequest) {
   const url = new URL(request.url);
   const password = url.searchParams.get('password');
   
-  if (password !== 'congyao2024') {
+  if (password !== '19821123Y@oc') {
     return NextResponse.json(
       { error: 'Unauthorized' },
       { status: 401 }
@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
   const url = new URL(request.url);
   const password = url.searchParams.get('password');
   
-  if (password !== 'congyao2024') {
+  if (password !== '19821123Y@oc') {
     return NextResponse.json(
       { error: 'Unauthorized' },
       { status: 401 }
