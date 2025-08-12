@@ -16,10 +16,18 @@ export async function GET() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'onboarding@resend.dev',
-        to: ['cong.yao.main@gmail.com'],
+        from: 'onboarding@resend.dev', // Resend's default sender
+        to: ['congyao@bu.edu'], // Your verified email
         subject: 'Test Email from Cong Yao Website',
-        html: '<h2>This is a test email</h2><p>If you receive this, the email service is working!</p>',
+        html: `
+          <h2>This is a test email</h2>
+          <p>If you receive this, the email service is working!</p>
+          <p><strong>Test Data:</strong></p>
+          <p><strong>Name:</strong> Test User</p>
+          <p><strong>Email:</strong> test@example.com</p>
+          <p><strong>WeChat ID:</strong> test_wechat_id</p>
+          <p><strong>Question:</strong> This is a test question to verify the email service is working properly.</p>
+        `,
       }),
     });
 

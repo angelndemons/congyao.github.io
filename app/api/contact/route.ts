@@ -4,12 +4,12 @@ export async function POST(request: NextRequest) {
   try {
     console.log('Contact form submission started');
     
-    const { name, email, message } = await request.json();
-    console.log('Form data received:', { name, email, messageLength: message?.length });
+    const { name, email, wechatId, message } = await request.json();
+    console.log('Form data received:', { name, email, wechatId, messageLength: message?.length });
 
     // Validate input
     if (!name || !email || !message) {
-      console.log('Validation failed - missing fields');
+      console.log('Validation failed - missing required fields');
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
@@ -29,13 +29,14 @@ export async function POST(request: NextRequest) {
 
     // Use Resend API
     const emailData = {
-      from: 'onboarding@resend.dev',
-      to: ['cong.yao.main@gmail.com'],
+      from: 'onboarding@resend.dev', // Resend's default sender
+      to: ['congyao@bu.edu'], // Your verified email
       subject: `New Question for Cong from ${name}`,
       html: `
         <h2>New Question for Cong!</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
+        ${wechatId ? `<p><strong>WeChat ID:</strong> ${wechatId}</p>` : ''}
         <p><strong>Question:</strong></p>
         <p>${message}</p>
       `,
