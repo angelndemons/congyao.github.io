@@ -148,22 +148,19 @@ export default function Home() {
           <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Legal Expertise</h3>
           <div className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-xl p-8 border border-slate-200 dark:border-slate-700">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div>
-                <h4 className="font-semibold text-slate-900 dark:text-white mb-3">IP & Patent Law</h4>
-                <ul className="space-y-2 text-slate-700 dark:text-slate-300">
-                  <li>Loss-Of-Exclusivity Analysis and Strategies</li>
-                  <li>Patent Law</li>
-                  <li>Global Portfolio Design and Execution</li>
-                  <li>Strategic IP Planning</li>
-                  <li>Patent Prosecution</li>
-                  <li>BPCIA</li>
-                  <li>Hatch-Waxman</li>
-                  <li>IP Litigation</li>
-                  <li>Trademark Law</li>
-                  <li>Trade Secret Law</li>
-                  <li>Copyright Law</li>
-                </ul>
-              </div>
+                           <div>
+               <h4 className="font-semibold text-slate-900 dark:text-white mb-3">Intellectual Property</h4>
+               <ul className="space-y-2 text-slate-700 dark:text-slate-300">
+                 <li>Loss-Of-Exclusivity Analysis and Strategies</li>
+                 <li>Patent Law</li>
+                 <li>Global Portfolio Design and Execution</li>
+                 <li>Strategic IP Planning</li>
+                 <li>Patent Prosecution</li>
+                 <li>Trademark Law</li>
+                 <li>Trade Secret Law</li>
+                 <li>Copyright Law</li>
+               </ul>
+             </div>
               
                            <div>
                <h4 className="font-semibold text-slate-900 dark:text-white mb-3">Transactional Law</h4>
@@ -178,30 +175,31 @@ export default function Home() {
                </ul>
              </div>
               
-              <div>
-                <h4 className="font-semibold text-slate-900 dark:text-white mb-3">Due Diligence</h4>
-                <ul className="space-y-2 text-slate-700 dark:text-slate-300">
-                  <li>Legal Due Diligence</li>
-                  <li>IP Due Diligence</li>
-                  <li>Exhaustive DD Analysis of Target</li>
-                  <li>Responding to DD Inquiries</li>
-                  <li>Cross-Border IP Issues</li>
-                </ul>
-              </div>
-              
                            <div>
-               <h4 className="font-semibold text-slate-900 dark:text-white mb-3">Corporate</h4>
-                <ul className="space-y-2 text-slate-700 dark:text-slate-300">
-                  <li>Corporate Governance</li>
-                  <li>Board Counsel</li>
-                  <li>SEC Compliance</li>
-                  <li>Employment Law</li>
-                  <li>Risk Management</li>
-                  <li>Regulatory Compliance</li>
-                  <li>Biotech Business</li>
-                  <li>Strategic Counsel</li>
-                </ul>
-              </div>
+               <h4 className="font-semibold text-slate-900 dark:text-white mb-3">Litigation</h4>
+               <ul className="space-y-2 text-slate-700 dark:text-slate-300">
+                 <li>Patent Infringement/Invalidity Suits</li>
+                 <li>BPCIA (Patent Dance)</li>
+                 <li>Hatch-Waxman</li>
+                 <li>Commercial Litigation</li>
+                 <li>Contract Dispute</li>
+                 <li>USPTO Proceedings (IPR, PGR)</li>
+                 <li>International Arbitration (AAA)</li>
+               </ul>
+             </div>
+             
+             <div>
+               <h4 className="font-semibold text-slate-900 dark:text-white mb-3">Due Diligence</h4>
+               <ul className="space-y-2 text-slate-700 dark:text-slate-300">
+                 <li>Legal Due Diligence</li>
+                 <li>IP Due Diligence</li>
+                 <li>Exhaustive DD Analysis of Target</li>
+                 <li>Responding to DD Inquiries</li>
+                 <li>Cross-Border IP Issues</li>
+               </ul>
+             </div>
+              
+                           
             </div>
           </div>
         </section>
