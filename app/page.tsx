@@ -96,49 +96,61 @@ export default function Home() {
         <section id="skills" className="mb-16">
           <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Legal Expertise</h3>
           <div className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-xl p-8 border border-slate-200 dark:border-slate-700">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full text-sm">Loss-Of-Exclusivity Analysis and Strategies</span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full text-sm">Patent Law</span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full text-sm">Global Portfolio Design and Execution</span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full text-sm">Strategic IP Planning</span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full text-sm">Patent Prosecution</span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full text-sm">BPCIA</span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full text-sm">Hatch-Waxman</span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full text-sm">IP Litigation</span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full text-sm">Trademark Law</span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full text-sm">Trade Secret Law</span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full text-sm">Copyright Law</span>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div>
+                <h4 className="font-semibold text-slate-900 dark:text-white mb-3">IP & Patent Law</h4>
+                <ul className="space-y-2 text-slate-700 dark:text-slate-300">
+                  <li>Loss-Of-Exclusivity Analysis and Strategies</li>
+                  <li>Patent Law</li>
+                  <li>Global Portfolio Design and Execution</li>
+                  <li>Strategic IP Planning</li>
+                  <li>Patent Prosecution</li>
+                  <li>BPCIA</li>
+                  <li>Hatch-Waxman</li>
+                  <li>IP Litigation</li>
+                  <li>Trademark Law</li>
+                  <li>Trade Secret Law</li>
+                  <li>Copyright Law</li>
+                </ul>
               </div>
               
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-full text-sm">Transactional Law</span>
-                <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-full text-sm">CDA/NDA</span>
-                <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-full text-sm">MTA</span>
-                <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-full text-sm">Clinical Trial Agreements</span>
-                <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-full text-sm">Collaboration Agreements</span>
-                <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-full text-sm">Patent Licenses</span>
-                <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-full text-sm">M&A Agreements</span>
-                <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-full text-sm">Joint Ventures</span>
+              <div>
+                <h4 className="font-semibold text-slate-900 dark:text-white mb-3">Transactional Law</h4>
+                <ul className="space-y-2 text-slate-700 dark:text-slate-300">
+                  <li>Transactional Law</li>
+                  <li>CDA/NDA</li>
+                  <li>MTA</li>
+                  <li>Clinical Trial Agreements</li>
+                  <li>Collaboration Agreements</li>
+                  <li>Patent Licenses</li>
+                  <li>M&A Agreements</li>
+                  <li>Joint Ventures</li>
+                </ul>
               </div>
               
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-200 rounded-full text-sm">Legal Due Diligence</span>
-                <span className="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-200 rounded-full text-sm">IP Due Diligence</span>
-                <span className="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-200 rounded-full text-sm">Exhaustive DD Analysis of Target</span>
-                <span className="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-200 rounded-full text-sm">Responding to DD Inquiries</span>
-                <span className="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-200 rounded-full text-sm">Cross-Border IP Issues</span>
+              <div>
+                <h4 className="font-semibold text-slate-900 dark:text-white mb-3">Due Diligence</h4>
+                <ul className="space-y-2 text-slate-700 dark:text-slate-300">
+                  <li>Legal Due Diligence</li>
+                  <li>IP Due Diligence</li>
+                  <li>Exhaustive DD Analysis of Target</li>
+                  <li>Responding to DD Inquiries</li>
+                  <li>Cross-Border IP Issues</li>
+                </ul>
               </div>
               
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 rounded-full text-sm">Corporate Governance</span>
-                <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 rounded-full text-sm">Board Counsel</span>
-                <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 rounded-full text-sm">SEC Compliance</span>
-                <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 rounded-full text-sm">Employment Law</span>
-                <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 rounded-full text-sm">Risk Management</span>
-                <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 rounded-full text-sm">Regulatory Compliance</span>
-                <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 rounded-full text-sm">Biotech Business</span>
-                <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 rounded-full text-sm">Strategic Counsel</span>
+              <div>
+                <h4 className="font-semibold text-slate-900 dark:text-white mb-3">Corporate & Governance</h4>
+                <ul className="space-y-2 text-slate-700 dark:text-slate-300">
+                  <li>Corporate Governance</li>
+                  <li>Board Counsel</li>
+                  <li>SEC Compliance</li>
+                  <li>Employment Law</li>
+                  <li>Risk Management</li>
+                  <li>Regulatory Compliance</li>
+                  <li>Biotech Business</li>
+                  <li>Strategic Counsel</li>
+                </ul>
               </div>
             </div>
           </div>
