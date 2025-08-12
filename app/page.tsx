@@ -77,7 +77,12 @@ export default function Home() {
               <p className="text-slate-600 dark:text-slate-300 mt-1">Biotech Attorney Specializing in IP, Agreements, and AI</p>
             </div>
             <nav className="flex gap-6">
-              <a href="#ask-cong" className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">Ask Cong!</a>
+              <a 
+                href="#ask-cong" 
+                className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md"
+              >
+                Ask Cong!
+              </a>
             </nav>
           </div>
         </div>
