@@ -24,6 +24,8 @@ export default function Home() {
     setIsSubmitting(true);
     
     try {
+      console.log('Submitting form data:', formData);
+      
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -32,13 +34,20 @@ export default function Home() {
         body: JSON.stringify(formData),
       });
 
+      console.log('Response status:', response.status);
+      
       if (response.ok) {
+        const result = await response.json();
+        console.log('Success response:', result);
         setSubmitStatus('success');
         setFormData({ name: '', email: '', message: '' });
       } else {
+        const errorData = await response.json();
+        console.error('Error response:', errorData);
         setSubmitStatus('error');
       }
-    } catch {
+    } catch (error) {
+      console.error('Form submission error:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
