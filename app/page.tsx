@@ -294,7 +294,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-6 py-8">
           <div className="text-center">
             <p className="text-slate-600 dark:text-slate-300">
-              © 2024 Cong Yao. Built with Next.js and React.
+              © {new Date().getFullYear()} Cong Yao. All rights reserved.
             </p>
           </div>
         </div>
