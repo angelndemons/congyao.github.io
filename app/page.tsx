@@ -90,7 +90,7 @@ export default function Home() {
             Welcome, I&apos;m Cong Yao
           </h2>
           <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-            Experienced IP and transactional attorney with deep understanding of biotech business, specializing in agreements, litigation, and strategic legal counsel.
+            Experienced IP and transactional attorney with deep understanding of biotech business, specializing in agreements, litigation, and strategic legal counsel for biotech companies.
           </p>
         </section>
 
@@ -281,7 +281,7 @@ export default function Home() {
                 <p className="text-xs text-slate-500 dark:text-slate-400 text-center">
                   <strong>Important:</strong> Contacting me through this form does not create an attorney-client relationship. 
                   Do not submit confidential or privileged information. By submitting this form, you consent to the processing 
-                  of your information for the purpose of responding to your inquiry.
+                  of your information for the purpose of responding to your inquiry and providing legal services.
                 </p>
               </div>
             </form>
