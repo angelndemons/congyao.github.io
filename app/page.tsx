@@ -7,7 +7,8 @@ export default function Home() {
     name: '',
     email: '',
     wechatId: '',
-    message: ''
+    message: '',
+    phone: '' // Honeypot field - hidden from users but bots might fill it
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -41,11 +42,21 @@ export default function Home() {
         const result = await response.json();
         console.log('Success response:', result);
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', wechatId: '', message: '' });
+        setFormData({ name: '', email: '', wechatId: '', message: '', phone: '' });
       } else {
         const errorData = await response.json();
         console.error('Error response:', errorData);
-        setSubmitStatus('error');
+        
+        // Handle specific error types
+        if (response.status === 429) {
+          setSubmitStatus('error');
+          // You could add a specific error message for rate limiting
+        } else if (response.status === 400) {
+          setSubmitStatus('error');
+          // You could add specific error messages for validation errors
+        } else {
+          setSubmitStatus('error');
+        }
       }
     } catch (error) {
       console.error('Form submission error:', error);
@@ -177,6 +188,15 @@ export default function Home() {
               Ask me anything on your mind, legal or otherwise (not giving legal advice :)
             </p>
           </div>
+          
+          {/* Legal Disclaimer */}
+          <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4 mb-6">
+            <p className="text-sm text-yellow-800 dark:text-yellow-200">
+              <strong>Important:</strong> Contacting me through this form does not create an attorney-client relationship. 
+              Do not submit confidential or privileged information. By submitting this form, you consent to the processing 
+              of your information for the purpose of responding to your inquiry.
+            </p>
+          </div>
             
             <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6">
               <div>
@@ -221,6 +241,19 @@ export default function Home() {
                   onChange={handleInputChange}
                   className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                   placeholder="Your WeChat ID (optional)"
+                />
+              </div>
+              
+              {/* Honeypot field - hidden from users but bots might fill it */}
+              <div className="hidden">
+                <input
+                  type="text"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  style={{ display: 'none' }}
                 />
               </div>
               <div>
