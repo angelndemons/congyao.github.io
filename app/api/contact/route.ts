@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { addSpamLog } from '../spam-log/route';
 
 // Simple in-memory rate limiting (for production, consider Redis or similar)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -63,6 +64,16 @@ export async function POST(request: NextRequest) {
         phone,
         name: name || 'unknown',
         email: email || 'unknown'
+      });
+      
+      // Log to spam tracking system
+      addSpamLog({
+        ip,
+        spamScore: 10, // High score for honeypot
+        reason: 'Honeypot field filled',
+        name: name || 'unknown',
+        email: email || 'unknown',
+        message: message || 'unknown'
       });
       
       // Add a small delay to make bot spam less profitable
@@ -137,6 +148,16 @@ export async function POST(request: NextRequest) {
         name: sanitizedName,
         email: sanitizedEmail,
         message: sanitizedMessage.substring(0, 100) + '...'
+      });
+      
+      // Log to spam tracking system
+      addSpamLog({
+        ip,
+        spamScore,
+        reason: 'High spam score',
+        name: sanitizedName,
+        email: sanitizedEmail,
+        message: sanitizedMessage
       });
       
       // Add a small delay to make spam less profitable
