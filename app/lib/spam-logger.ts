@@ -42,7 +42,7 @@ export function getDailyEmailCount(): number {
 
 // Function to check if daily limit is reached
 export function isDailyLimitReached(): boolean {
-  return getDailyEmailCount() >= 1; // Temporarily set to 1 for testing
+  return getDailyEmailCount() >= 50; // Back to normal limit
 }
 
 // Function to get spam logs
@@ -62,7 +62,7 @@ export function getSpamLogs() {
       filteredToday,
       totalToday: todayLogs.length,
       limitReached: isDailyLimitReached(),
-      limit: 1 // Temporarily set to 1 for testing
+      limit: 50 // Back to normal limit
     }
   };
 }
