@@ -58,10 +58,20 @@ export async function POST(request: NextRequest) {
 
     // Check honeypot field - if filled, likely a bot
     if (phone) {
-      console.log('Honeypot field filled - likely a bot');
+      console.log('Honeypot field filled - likely a bot:', {
+        ip,
+        phone,
+        name: name || 'unknown',
+        email: email || 'unknown'
+      });
+      
+      // Add a small delay to make bot spam less profitable
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Return success to avoid letting bots know they were detected
       return NextResponse.json(
-        { error: 'Invalid request' },
-        { status: 400 }
+        { message: 'Thank you!' },
+        { status: 200 }
       );
     }
 
@@ -89,18 +99,53 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check for suspicious content (basic spam detection)
-    const suspiciousKeywords = ['casino', 'crypto', 'bitcoin', 'viagra', 'loan', 'debt'];
+    // Spam detection with scoring system
+    let spamScore = 0;
+    const suspiciousKeywords = [
+      'casino', 'crypto', 'bitcoin', 'viagra', 'loan', 'debt', 
+      'make money', 'earn money', 'investment opportunity', 'work from home',
+      'get rich', 'quick cash', 'urgent', 'limited time', 'act now'
+    ];
+    
     const messageLower = sanitizedMessage.toLowerCase();
-    const hasSuspiciousContent = suspiciousKeywords.some(keyword => 
-      messageLower.includes(keyword)
-    );
-
-    if (hasSuspiciousContent) {
-      console.log('Suspicious content detected in message');
+    const nameLower = sanitizedName.toLowerCase();
+    const emailLower = sanitizedEmail.toLowerCase();
+    
+    // Check for suspicious keywords in message
+    suspiciousKeywords.forEach(keyword => {
+      if (messageLower.includes(keyword)) spamScore += 2;
+    });
+    
+    // Check for suspicious patterns
+    if (messageLower.includes('http://') || messageLower.includes('https://')) spamScore += 1;
+    if (messageLower.includes('click here') || messageLower.includes('visit')) spamScore += 1;
+    if (messageLower.includes('$$') || messageLower.includes('$')) spamScore += 1;
+    
+    // Check for suspicious email patterns
+    if (emailLower.includes('temp') || emailLower.includes('test')) spamScore += 1;
+    if (emailLower.match(/[0-9]{8,}/)) spamScore += 1; // Many numbers
+    
+    // Check for suspicious name patterns
+    if (nameLower.includes('test') || nameLower.includes('admin')) spamScore += 1;
+    if (nameLower.length < 2) spamScore += 1;
+    
+    // If spam score is high enough, log but don't send email
+    if (spamScore >= 3) {
+      console.log('High spam score detected - logging but not sending email:', {
+        ip,
+        spamScore,
+        name: sanitizedName,
+        email: sanitizedEmail,
+        message: sanitizedMessage.substring(0, 100) + '...'
+      });
+      
+      // Add a small delay to make spam less profitable
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Return success to avoid letting spammers know they were detected
       return NextResponse.json(
-        { error: 'Message contains inappropriate content' },
-        { status: 400 }
+        { message: 'Thank you!' },
+        { status: 200 }
       );
     }
 
@@ -166,7 +211,7 @@ export async function POST(request: NextRequest) {
     console.log('Email sent successfully:', result);
 
     return NextResponse.json(
-      { message: 'Email sent successfully' },
+      { message: 'Thank you!' },
       { status: 200 }
     );
 

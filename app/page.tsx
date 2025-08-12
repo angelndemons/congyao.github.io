@@ -279,7 +279,7 @@ export default function Home() {
                 {isSubmitting ? 'Sending...' : 'Ask Cong!'}
               </button>
               {submitStatus === 'success' && (
-                <p className="text-green-600 dark:text-green-400 text-sm text-center">Thanks! I&apos;ll get back to you soon!</p>
+                <p className="text-green-600 dark:text-green-400 text-sm text-center">Thank you! I&apos;ll get back to you soon!</p>
               )}
               {submitStatus === 'error' && (
                 <p className="text-red-600 dark:text-red-400 text-sm text-center">Oops! Something went wrong. Please try again.</p>
