@@ -1,0 +1,94 @@
+{
+  "header": {
+    "title": "Cong Yao",
+    "subtitle": "Biotech Attorney Specializing in IP, Agreements, and AI"
+  },
+  "hero": {
+    "title": "Welcome, I'm Cong Yao",
+    "description": "Experienced IP and transactional attorney with deep understanding of biotech business, specializing in agreements, litigation, and strategic legal counsel for biotech companies."
+  },
+  "about": {
+    "title": "About Me",
+    "content1": "I'm an experienced IP and transactional attorney with deep expertise in biotechnology and pharmaceutical law. My practice spans intellectual property litigation, complex transactional agreements, and strategic business counsel. I understand the unique challenges biotech companies face and help them navigate legal complexities while advancing their business objectives.",
+    "content2": "With extensive experience in patent litigation, licensing agreements, and corporate transactions, I provide practical legal solutions that align with business goals. Connect with me on",
+    "linkedin": "LinkedIn"
+  },
+  "expertise": {
+    "title": "Legal Expertise",
+    "ip": {
+      "title": "Intellectual Property",
+      "items": [
+        "Loss-Of-Exclusivity Analysis and Strategies",
+        "Patent Law",
+        "Global Portfolio Design and Execution",
+        "Strategic IP Planning",
+        "Patent Prosecution",
+        "Trademark Law",
+        "Trade Secret Law",
+        "Copyright Law"
+      ]
+    },
+    "transactional": {
+      "title": "Transactional Law",
+      "items": [
+        "CDA/NDA",
+        "MTA",
+        "Clinical Trial Agreements",
+        "Collaboration Agreements",
+        "Patent Licenses",
+        "M&A Agreements",
+        "Joint Ventures"
+      ]
+    },
+    "litigation": {
+      "title": "Litigation",
+      "items": [
+        "Patent Infringement/Invalidity Suits",
+        "BPCIA (Patent Dance)",
+        "Hatch-Waxman",
+        "Commercial Litigation",
+        "Contract Dispute",
+        "USPTO Proceedings (IPR, PGR)",
+        "International Arbitration (AAA)"
+      ]
+    },
+    "duediligence": {
+      "title": "Due Diligence",
+      "items": [
+        "Legal Due Diligence",
+        "IP Due Diligence",
+        "Exhaustive DD Analysis of Target",
+        "Responding to DD Inquiries",
+        "Cross-Border IP Issues"
+      ]
+    }
+  },
+  "contact": {
+    "title": "Ask Cong!",
+    "intro": "Ask me anything on your mind, legal or otherwise (not giving legal advice :)",
+    "limitMessage": "☕ Oops! My inbox is flooded and taking a coffee break! Come back tomorrow when I'm fresh and caffeinated.",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "wechatId": "WeChat ID",
+      "wechatIdOptional": "(optional)",
+      "question": "Question",
+      "namePlaceholder": "Your name",
+      "emailPlaceholder": "your.email@example.com",
+      "wechatPlaceholder": "Your WeChat ID (optional)",
+      "questionPlaceholder": "What's on your mind? Ask away!",
+      "submit": "Ask Cong!",
+      "sending": "Sending...",
+      "limitReached": "Daily Limit Reached"
+    },
+    "disclaimer": "Important: Contacting me through this form does not create an attorney-client relationship. Do not submit confidential or privileged information. By submitting this form, you consent to the processing of your information for the purpose of responding to your inquiry and providing legal services.",
+    "success": "Thank you! I'll get back to you soon!",
+    "error": "Oops! Something went wrong. Please try again."
+  },
+  "footer": {
+    "copyright": "© {year} Cong Yao. All rights reserved."
+  },
+  "navigation": {
+    "askCong": "Ask Cong!"
+  }
+}

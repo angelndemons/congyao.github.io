@@ -1,0 +1,94 @@
+{
+  "header": {
+    "title": "姚丛",
+    "subtitle": "专注于知识产权，协议和人工智能的美国律师"
+  },
+  "hero": {
+    "title": "您好，我是姚丛",
+    "description": "经验丰富的知识产权和交易律师，对生物技术业务有深入了解，专门从事协议、诉讼和生物技术公司的战略法律咨询。"
+  },
+  "about": {
+    "title": "",
+    "content1": "我是一名经验丰富的知识产权和交易律师，在生物技术和制药法方面具有深厚的专业知识。我的业务涵盖全球专利策略、协议纠纷、国际仲裁、知识产权诉讼、复杂交易协议和战略商业咨询。我了解生物技术公司面临的独特挑战，并帮助他们在推进业务目标的同时应对法律复杂性。欢迎访问我的<link>领英页面</link>，了解关于我的更多背景和经历。",
+    "content2": "",
+    "linkedin": "领英"
+  },
+  "expertise": {
+    "title": "法律专长",
+    "ip": {
+      "title": "知识产权",
+      "items": [
+        "药品独享期分析",
+        "专利法",
+        "全球专利布局",
+        "战略知识产权规划",
+        "专利申请",
+        "商标法",
+        "商业秘密法",
+        "版权法"
+      ]
+    },
+    "transactional": {
+      "title": "协议法",
+      "items": [
+        "保密协议",
+        "材料转让协议",
+        "临床试验协议",
+        "合作协议",
+        "专利许可",
+        "并购协议",
+        "NewCo"
+      ]
+    },
+    "litigation": {
+      "title": "诉讼",
+      "items": [
+        "专利侵权/无效诉讼",
+        "BPCIA（专利舞蹈）",
+        "Hatch-Waxman 诉讼",
+        "商业诉讼",
+        "合同纠纷",
+        "美国专利商标局程序（IPR、PGR）",
+        "国际仲裁（AAA）"
+      ]
+    },
+    "duediligence": {
+      "title": "尽职调查",
+      "items": [
+        "法律尽职调查",
+        "知识产权尽职调查",
+        "目标公司详尽尽职调查分析",
+        "回应尽职调查询问",
+        "跨境知识产权问题"
+      ]
+    }
+  },
+  "contact": {
+    "title": "问问姚博",
+    "intro": "",
+    "limitMessage": "☕ 哎呀！我的收件箱被淹没了，正在休息喝咖啡！明天我精神饱满、咖啡因充足时再来吧。",
+    "form": {
+      "name": "姓名",
+      "email": "邮箱",
+      "wechatId": "微信ID",
+      "wechatIdOptional": "（可选）",
+      "question": "问题",
+      "namePlaceholder": "您的姓名",
+      "emailPlaceholder": "your.email@example.com",
+      "wechatPlaceholder": "您的微信ID（可选）",
+      "questionPlaceholder": "",
+      "submit": "问问姚博",
+      "sending": "发送中...",
+      "limitReached": "今日限额已满"
+    },
+    "disclaimer": "重要提示：通过此表格联系我并不会建立律师-客户代理关系。请勿提交保密信息。",
+    "success": "谢谢！我会尽快回复您！",
+    "error": "哎呀！出了点问题。请再试一次。"
+  },
+  "footer": {
+    "copyright": ""
+  },
+  "navigation": {
+    "askCong": "问问姚博"
+  }
+}
